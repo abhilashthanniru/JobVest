@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobVest</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+   <nav class="navbar">
+    <div class="logo"><a href="homepage.html"><img src="./images/logo1.png" alt=""></a></div>
+    <div class="search-box"><img src="./images/search.png" alt="">
+    <input type="text" placeholder="Search"></div>
+    <div class="nav-mid">
+        <ul>
+            <li><a href="" class="activelink"><img src="./images/home.png" alt=""><span>Home</span></a></li>
+            <li><a href=""><img src="./images/network.png" alt=""><span>My Network</span></a></li>
+            <li><a href=""><img src="./images/jobs.png" alt=""><span>Jobs</span></a></li>
+            <li><a href=""><img src="./images/message.png" alt=""><span>Messaging</span></a></li>
+            <li><a href=""><img src="./images/notification.png" alt=""><span>Funding</span></a></li>
+        </ul>
+    </div>
+    <img src="./images/moon.png" id="icon">
+    <div class="nav-right">
+        <div class="online">
+            <img src="./images/user-1.png" alt="user-img" onclick="toggleMenu()" >
+        </div>
+    </div>
+    <div class="profile" id="profileMenu">
+      <div class="profile_menu">
+        <div class="user-info">
+          <img src="./images/user-1.png" alt="">
+          <div>
+            <h3>Rayan Walton</h3>
+            <a href="">See your profile</a>
+          </div>
+        </div>
+        <hr>
+        <a href="" class="profilemenu_link">
+        <img src="./images/feedback.png" alt="">
+        <p>Give feedback</p>
+        <span>></span></a>
+        <a href="" class="profilemenu_link">
+            <img src="./images/setting.png" alt="">
+            <p>Settings & Privacy</p>
+            <span>></span></a>
+            <a href="" class="profilemenu_link">
+              <img src="./images/help.png" alt="">
+              <p>Help & Support</p>
+              <span>></span></a>
+              <a href="" class="profilemenu_link">
+                <img src="./images/logout.png" alt="">
+                <p>Logout</p>
+                <span>></span></a>
+      </div>
+    </div>
+   </nav>
+   <div class="container">
+    <div class="profile-main">
+        <div class="profile-container">
+            <img src="./images/cover-pic.png" width="100%">
+            <div class="profile-container-inner">
+                <img src="images/user-1.png" class="profile-pic">
+                <h1>Rayan Walton</h1>
+                <b>Web Developer at Microsoft | Former developer at Datastack and Intern at Oracle</b>
+                <p>Hyderabad, India &middot; <a href="">Contact info</a></p>
+                <div class="mutual-connection">
+                    <img src="images/user-2.png" alt="">
+                    <span>1 mutual connection: Reevanth Chingari</span>
+                </div>
+                <div class="profile-btn">
+                    <a href="" class="primary-btn"><img src="images/connect.png" alt="">Connect</a>
+                    <a href=""><img src="images/chat.png" alt="">Message</a>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="profile-description">
+            <h2>About</h2>
+            <p>The success of every </p>
+            <a href=""class="see-more">See more...</a>
+        </div>
+        <div class="profile-description">
+            <h2>Experince</h2>
+            <div class="profile-desc-row">
+                <img src="images/microsoft.png" alt="">
+                <div>
+                    <h3>Lead Front-End Developer</h3>
+                    <b>Microsoft</b>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+<!-- -------profile-sidebar----- -->
+    <div class="profile-sidebar"></div>
+   </div>
+  
+   <script>
+    function toggleMenu() {
+        let profileMenu = document.getElementById("profileMenu");
+        profileMenu.classList.toggle("open_menu");
+    }
+   </script>
+</body>
+</html>

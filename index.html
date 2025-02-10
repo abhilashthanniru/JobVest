@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In & Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #141e30, #243b55);
+            background: url(./images/login.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .box {
+            padding: 30px;
+            width: 380px;
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .form h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .inputbox {
+            position: relative;
+            margin: 20px 0;
+        }
+        .inputbox input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            outline: none;
+            background: none;
+            border-bottom: 2px solid #fff;
+            color: #fff;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .inputbox span {
+            position: absolute;
+            top: 14px;
+            left: 12px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            transition: 0.3s ease;
+            pointer-events: none;
+        }
+        .inputbox input:focus + span,
+        .inputbox input:valid + span {
+            transform: translateY(-20px);
+            font-size: 12px;
+            color: #0cc0df;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            color: #fff;
+            border: none;
+            outline: none;
+            background: #0cc0df;
+            font-size: 17px;
+            border-radius: 6px;
+            transition: 0.3s ease;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #0898b3;
+        }
+        .toggle, .reset {
+            display: block;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .toggle:hover, .reset:hover {
+            color: #0cc0df;
+        }
+        .guest {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+        .guest:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+    <script type="module" src="register.js" defer></script>
+</head>
+<body>
+    <div class="box">
+        <div class="form">
+            <h2 id="formTitle">Sign Up</h2>
+            <form id="signupForm">
+                <div class="inputbox">
+                    <input type="email" id="signupEmail" required>
+                    <span>Email</span>
+                </div>
+                <div class="inputbox">
+                    <input type="password" id="signupPassword" required>
+                    <span>Password</span>
+                </div>
+                <button id="signupButton" class="btn">Create Account</button>
+                <p class="toggle" id="toggleSignIn">Already have an account? Sign In</p>
+            </form>
+
+            <form id="signinForm" style="display: none;">
+                <div class="inputbox">
+                    <input type="email" id="signinEmail" required>
+                    <span>Email</span>
+                </div>
+                <div class="inputbox">
+                    <input type="password" id="signinPassword" required>
+                    <span>Password</span>
+                </div>
+                <button id="signinButton" class="btn">Sign In</button>
+                <p class="toggle" id="toggleSignUp">Don't have an account? Sign Up</p>
+            </form>
+        </div>
+        <a href="#" id="reset" class="reset">Forgot password?</a>
+        <button id="guestmode" class="guest">Guest Mode</button>
+    </div>
+</body>
+</html>
