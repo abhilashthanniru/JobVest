@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Premium - LinkedIn Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f2ef;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #0073b1;
+        }
+        .plan {
+            padding: 10px;
+            border: 2px solid #0073b1;
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .plan:hover {
+            background: #0073b1;
+            color: white;
+        }
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .payment-option {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .payment-option:hover {
+            background: #e0e0e0;
+        }
+        button {
+            background: #0073b1;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #005f8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upgrade to Premium</h2>
+        <div class="plan">LinkedIn Premium - 299/month</div>
+        <div class="plan">Business Premium - 499/month</div>
+        
+        <h3>Select Payment Method</h3>
+        <div class="payment-options">
+            <div class="payment-option">💳 Credit/Debit Card</div>
+            <div class="payment-option">🅿️ PayPal</div>
+            <div class="payment-option">📲 UPI</div>
+        </div>
+        
+        <button onclick="confirmPayment()">Proceed to Pay</button>
+    </div>
+
+    <script>
+        function confirmPayment() {
+            alert("Redirecting to secure payment gateway...");
+            // Here, you can integrate a real payment gateway API like Stripe, Razorpay, or PayPal.
+        }
+    </script>
+</body>
+</html>

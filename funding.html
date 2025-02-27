@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funding Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        header {
+            background: #0073b1;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            height: calc(100vh - 60px);
+        }
+        .sidebar {
+            width: 250px;
+            background: #fff;
+            padding: 20px;
+            border-right: 2px solid #ddd;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .content {
+            flex: 1;
+            margin-left: 270px;
+            padding: 20px;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        .startup-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        button {
+            background: #0073b1;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #005f8b;
+        }
+        .controls {
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Funding Connect</h1>
+        <button onclick="signInWithGoogle()">Sign In</button>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h2>Filters</h2>
+            <p><input type="checkbox" id="aiFilter" onclick="filterStartups()"> AI Startups</p>
+            <p><input type="checkbox" id="softwareFilter" onclick="filterStartups()"> Software Development</p>
+            <p><input type="checkbox" id="fintechFilter" onclick="filterStartups()"> FinTech</p>
+            <p><input type="checkbox" id="blockchainFilter" onclick="filterStartups()"> Blockchain</p>
+            <p><input type="checkbox" id="healthcareFilter" onclick="filterStartups()"> Healthcare</p>
+        </div>
+        
+        <div class="content">
+            <h2>Startups Seeking Funding</h2>
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="Search startups..." onkeyup="filterStartups()">
+                <select id="sortSelect" onchange="filterStartups()">
+                    <option value="">Sort By</option>
+                    <option value="funding_stage">Funding Stage</option>
+                    <option value="location">Location</option>
+                </select>
+            </div>
+            <div id="startupsList"></div>
+        </div>
+    </div>
+    
+    <script>
+        function signInWithGoogle() {
+            alert("Google Sign-In coming soon!");
+        }
+        
+        let allStartups = [];
+        
+        async function fetchStartups() {
+            try {
+                const response = await fetch('https://67ae21869e85da2f020c863f.mockapi.io/funding');
+                allStartups = await response.json();
+                displayStartups(allStartups);
+            } catch (error) {
+                console.error("Error fetching startups:", error);
+            }
+        }
+        
+        function displayStartups(startups) {
+            const startupsList = document.getElementById("startupsList");
+            startupsList.innerHTML = "";
+            
+            startups.forEach(startup => {
+                const div = document.createElement("div");
+                div.classList.add("startup-card");
+                div.innerHTML = `<h3>${startup.name}</h3>
+                                 <p>Industry: ${startup.industry}</p>
+                                 <p>Funding Stage: ${startup.funding_stage}</p>
+                                 <p>Location: ${startup.location}</p>
+                                 <p>Seeking: ${startup.seeking}</p>`;
+                startupsList.appendChild(div);
+            });
+        }
+        
+        function filterStartups() {
+            const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+            const sortOption = document.getElementById("sortSelect").value;
+            
+            const aiChecked = document.getElementById("aiFilter").checked;
+            const softwareChecked = document.getElementById("softwareFilter").checked;
+            const fintechChecked = document.getElementById("fintechFilter").checked;
+            const blockchainChecked = document.getElementById("blockchainFilter").checked;
+            const healthcareChecked = document.getElementById("healthcareFilter").checked;
+            
+            let filteredStartups = allStartups.filter(startup => {
+                if (aiChecked && startup.industry === "AI") return true;
+                if (softwareChecked && startup.industry === "Software Development") return true;
+                if (fintechChecked && startup.industry === "FinTech") return true;
+                if (blockchainChecked && startup.industry === "Blockchain") return true;
+                if (healthcareChecked && startup.industry === "Healthcare") return true;
+                return !aiChecked && !softwareChecked && !fintechChecked && !blockchainChecked && !healthcareChecked;
+            }).filter(startup => startup.name.toLowerCase().includes(searchQuery));
+            
+            if (sortOption) {
+                filteredStartups.sort((a, b) => a[sortOption].localeCompare(b[sortOption]));
+            }
+            
+            displayStartups(filteredStartups);
+        }
+        
+        fetchStartups();
+    </script>
+</body>
+</html>
